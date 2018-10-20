@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center_horizontal"
+              android:padding="20dp">
+
+    <ImageView
+            android:id="@+id/imageViewBadge"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_barca"/>
+
+    <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            tools:text="Barcelona FC"/>
+
+    <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas posuere, felis non tempor tristique, orci nisi sollicitudin est, quis rutrum dui risus at velit. Nullam ipsum felis, imperdiet eget dui vitae, consectetur mattis dolor. Donec convallis ac eros ut fermentum. Cras ullamcorper purus nec nibh lacinia, sit amet venenatis ligula sagittis. Pellentesque sed risus sollicitudin, dignissim felis fermentum, laoreet massa. Vestibulum ut condimentum orci. Sed semper neque et leo blandit blandit. Quisque a dui et urna egestas vulputate. Maecenas ut massa eget libero semper cursus sit amet sed enim."/>
+</LinearLayout>

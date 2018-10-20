@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">HelloKotlin</string>
-
+    <string name="app_name">Football Club</string>
+    <string name="label_football_clubs">Football Club</string>
     <string-array name="club_name">
         <item>Barcelona FC</item>
         <item>Real Madrid FC</item>
@@ -22,4 +22,30 @@
         <item>@drawable/img_acm</item>
         <item>@drawable/img_arsenal</item>
     </array>
+
+    <string-array name="club_description">
+        <item>Futbol Club Barcelona known simply as Barcelona and colloquially as Barça is a professional football club
+            based in Barcelona, Catalonia, Spain.
+        </item>
+        <item>Real Madrid Club de Fútbol commonly known as Real Madrid, is a professional football club based in Madrid,
+            Spain.
+        </item>
+        <item>Fußball-Club Bayern München e.V., commonly known as FC Bayern München, FCB, Bayern Munich, or FC Bayern,
+            is a German sports club based in Munich, Bavaria (Bayern).
+        </item>
+        <item>Manchester City Football Club, commonly known as City, is a football club in Manchester, England.</item>
+        <item>Manchester United Football Club, commonly known as Man. United or simply United, is a professional
+            football club based in Old Trafford, Greater Manchester, England, that competes in the Premier League, the
+            top flight of English football.
+        </item>
+        <item>Chelsea Football Club is a professional football club in London, England, that competes in the Premier
+            League
+        </item>
+        <item>Associazione Calcio Milan commonly referred to as A.C. Milan or simply Milan, is a professional football
+            club in Milan, Italy, founded in 1899.
+        </item>
+        <item>Arsenal Football Club is a professional football club based in Islington, London, England, that plays in
+            the Premier League, the top flight of English football.
+        </item>
+    </string-array>
 </resources>
