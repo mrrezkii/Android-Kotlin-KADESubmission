@@ -28,8 +28,8 @@ class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     // judul untuk tabs
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Last Match Tap"
-            else -> "Next Match Tap"
+            0 -> "Last Match"
+            else -> "Next Match"
         }
     }
 }
