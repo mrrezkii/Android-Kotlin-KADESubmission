@@ -2,7 +2,7 @@ package com.dicoding.submission2.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class Team(
+data class Club(
     @SerializedName("idTeam")
     var teamId: String? = null,
 
