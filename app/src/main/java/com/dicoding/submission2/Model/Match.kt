@@ -1,6 +1,7 @@
 package com.dicoding.submission2.Model
 
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Match(
