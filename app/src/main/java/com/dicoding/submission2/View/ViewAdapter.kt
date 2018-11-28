@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Presenter
+package com.dicoding.submission2.View
 
 import com.dicoding.submission2.Model.MatchModel
 
