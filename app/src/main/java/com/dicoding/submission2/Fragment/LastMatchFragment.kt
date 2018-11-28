@@ -27,5 +27,4 @@ class LastMatchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_last_match, container, false)
     }
 
-
 }
