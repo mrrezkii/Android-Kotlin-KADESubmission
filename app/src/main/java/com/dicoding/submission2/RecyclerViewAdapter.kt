@@ -1,6 +1,7 @@
 package com.dicoding.submission2
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,13 +16,9 @@ class RecyclerViewAdapter(val context: Context, private var ls: MutableList<Matc
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recyclerview_layout, p0, false))
     }
 
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getItemCount(): Int = ls.size
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun onBindViewHolder(p0: ViewHolder, p1: Int) = p0.bind(ls[p1])
 
 }
 
@@ -33,7 +30,10 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.tvTeamKanan.text = data.strAwayTeam
         itemView.tvSkorKanan.text = data.intAwayScore
         itemView.cvMatch.setOnClickListener {
-
+            val DetailIntent = Intent(itemView.context, DetailActivity::class.java)
+            DetailIntent.putExtra("idEvent", data.idEvent)
+            DetailIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            itemView.context.startActivity(DetailIntent)
         }
 
     }
