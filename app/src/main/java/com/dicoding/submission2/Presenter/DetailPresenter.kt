@@ -24,12 +24,13 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
             Response.Listener { response ->
                 val obj = response.getJSONArray("events").getJSONObject(0)
                 det = DetailModel(
-                    obj.getString("idEvent"),
-                    obj.getString("strDate"),
-                    obj.getString("strHomeTeam"),
-                    obj.getString("strAwayTeam"),
+                    obj.getString("strTime"),
+                    obj.getString("idHomeTeam"),
+                    obj.getString("idAwayTeam"),
                     obj.getString("intHomeScore"),
-                    obj.getString("intAwayScore")
+                    obj.getString("intAwayScore"),
+                    obj.getString("strHomeGoalDetails"),
+                    obj.getString("strAwayGoalDetails")
                 )
                 setHomeTeam()
             },
@@ -43,7 +44,7 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
         val queue = Volley.newRequestQueue(context)
         val stringRequest = JsonObjectRequest(
             Request.Method.GET,
-            context.resources.getString(R.string.base_url) + "lookupteam.php?id=" + det.strHomeTeam,
+            context.resources.getString(R.string.base_url) + "lookupteam.php?id=" + det.idHomeTeam,
             null,
             Response.Listener { response ->
                 val obj = response.getJSONArray("teams").getJSONObject(0)
@@ -61,7 +62,7 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
         val queue = Volley.newRequestQueue(context)
         val stringRequest = JsonObjectRequest(
             Request.Method.GET,
-            context.resources.getString(R.string.base_url) + "lookupteam.php?id=" + det.strAwayTeam,
+            context.resources.getString(R.string.base_url) + "lookupteam.php?id=" + det.idAwayTeam,
             null,
             Response.Listener { response ->
                 val obj = response.getJSONArray("teams").getJSONObject(0)
