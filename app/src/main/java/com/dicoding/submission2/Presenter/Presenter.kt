@@ -31,7 +31,7 @@ class Presenter(private var view: ViewAdapter, private var endpoint: String, pri
                             obj.getString("idEvent"),
                             obj.getString("strDate"),
                             obj.getString("strHomeTeam"),
-                            obj.getString("strAway"),
+                            obj.getString("strAwayTeam"),
                             obj.getString("intHomeScore"),
                             obj.getString("intAwayScore")
                         )
