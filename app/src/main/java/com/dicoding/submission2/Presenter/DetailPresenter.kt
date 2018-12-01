@@ -24,6 +24,7 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
             Response.Listener { response ->
                 val obj = response.getJSONArray("events").getJSONObject(0)
                 det = DetailModel(
+                    obj.getString("strDate"),
                     obj.getString("strTime"),
                     obj.getString("idHomeTeam"),
                     obj.getString("idAwayTeam"),
