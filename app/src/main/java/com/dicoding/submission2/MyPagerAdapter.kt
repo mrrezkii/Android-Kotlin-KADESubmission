@@ -31,7 +31,7 @@ class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         return when (position) {
             0 -> "Last Match"
             1 -> "Next Match"
-            else -> "Favorite"
+            else -> "FavoriteModel"
         }
     }
 }
