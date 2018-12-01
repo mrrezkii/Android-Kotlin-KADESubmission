@@ -9,13 +9,12 @@ import com.dicoding.submission2.Fragment.NextMatchFragment
 class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     // sebuah list yang menampung objek Fragment
-    private val pages = listOf(
-        LastMatchFragment(),
-        NextMatchFragment()
+    private val pages: MutableList<Fragment> = mutableListOf()
 
-
-    )
-
+    init {
+        pages.add(LastMatchFragment())
+        pages.add(NextMatchFragment())
+    }
     // menentukan fragment yang akan dibuka pada posisi tertentu
     override fun getItem(position: Int): Fragment? {
         return pages[position]

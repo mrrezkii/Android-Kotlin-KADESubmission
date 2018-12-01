@@ -26,9 +26,21 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(data: MatchModel) {
         itemView.tvDate.text = data.dateEvent
         itemView.tvTeamKiri.text = data.strHomeTeam
-        itemView.tvSkorKiri.text = data.intHomeScore
+
+        if (data.intHomeScore == "null") {
+            itemView.tvSkorKiri.text = "-"
+        } else {
+            itemView.tvSkorKiri.text = data.intHomeScore
+
+        }
         itemView.tvTeamKanan.text = data.strAwayTeam
-        itemView.tvSkorKanan.text = data.intAwayScore
+
+        if (data.intHomeScore == "null") {
+            itemView.tvSkorKanan.text = "-"
+        } else {
+            itemView.tvSkorKanan.text = data.intAwayScore
+
+        }
         itemView.cvMatch.setOnClickListener {
             val DetailIntent = Intent(itemView.context, DetailActivity::class.java)
             DetailIntent.putExtra("idEvent", data.idEvent)
