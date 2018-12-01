@@ -17,10 +17,10 @@ class FavoriteFragment : Fragment(), ViewAdapter {
     private lateinit var presenter: FavoritePresenter
     private lateinit var v: View
     private var list: MutableList<MatchModel> = mutableListOf()
-    override fun showDataRecycler(ls: MutableList<MatchModel>) {
+    override fun showDataRecycler(list: MutableList<MatchModel>) {
         this.list = list
         v.swipeRefresh.isRefreshing = false
-        if (ls.size > 0) {
+        if (list.size > 0) {
             v.tvNoData.visibility = View.INVISIBLE
             v.recyclerViewFavorite.adapter = RecyclerViewAdapter(this.context!!, this.list)
             v.recyclerViewFavorite.layoutManager = LinearLayoutManager(this.context)
