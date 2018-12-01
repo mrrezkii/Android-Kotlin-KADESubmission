@@ -9,16 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.dicoding.submission2.Model.MatchModel
 import com.dicoding.submission2.Presenter.Presenter
-
 import com.dicoding.submission2.R
 import com.dicoding.submission2.RecyclerViewAdapter
 import com.dicoding.submission2.View.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_last_match.*
 import kotlinx.android.synthetic.main.fragment_last_match.view.*
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.

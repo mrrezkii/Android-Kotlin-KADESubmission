@@ -3,7 +3,6 @@ package com.dicoding.submission2
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.dicoding.submission2.Model.DetailModel
 import com.dicoding.submission2.Model.TeamModel
@@ -41,19 +40,5 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         progressBar.visibility = View.VISIBLE
         presenter.getData()
     }
-
-    private fun setGoalText(goal: String, tv: TextView) {
-        if (goal == "null") {
-            tv.text = "-"
-        } else {
-            val goalArr = goal.split(";")
-            for (str: String in goalArr) {
-                val s = tv.text.toString() + str + "\n"
-                tv.text = s
-            }
-
-        }
-    }
-
 
 }
