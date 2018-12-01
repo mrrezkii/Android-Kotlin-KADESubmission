@@ -1,6 +1,7 @@
 package com.dicoding.submission2.Presenter
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
@@ -21,17 +22,20 @@ class FavoritePresenter(private val context: Context, private val view: ViewAdap
     fun getData() {
         dbHelper.use {
             val result = select(FavoriteModel.TABLE_FAVORITE).exec { parseList(classParser<FavoriteModel>()) }
+
             if (result.isEmpty()) {
                 view.showDataRecycler(listMatch)
             } else {
                 var y = 0
                 while (y < result.size) {
                     val queue = Volley.newRequestQueue(context)
-                    val stringRequest = JsonObjectRequest(
-                        Request.Method.GET,
+                    Log.d(
+                        "url",
+                        context.resources.getString(R.string.base_url) + "/lookupevent.php?id=" + result[y].eventId
+                    )
+                    val stringRequest = JsonObjectRequest(Request.Method.GET,
                         context.resources.getString(R.string.base_url) + "/lookupevent.php?id=" + result[y].eventId,
-                        null,
-                        Response.Listener { response ->
+                        null, Response.Listener { response ->
                             val arr = response.getJSONArray("events")
                             val obj = arr.getJSONObject(0)
                             val match = MatchModel(
@@ -48,8 +52,7 @@ class FavoritePresenter(private val context: Context, private val view: ViewAdap
                             if (listMatch.size == result.size) {
                                 view.showDataRecycler(listMatch)
                             }
-                        },
-                        Response.ErrorListener { error ->
+                        }, Response.ErrorListener { error ->
                             Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
                         })
                     queue.add(stringRequest)
