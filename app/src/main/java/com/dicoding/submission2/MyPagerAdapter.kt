@@ -3,9 +3,9 @@ package com.dicoding.submission2
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.dicoding.submission2.Fragment.FavoriteFragment
-import com.dicoding.submission2.Fragment.LastMatchFragment
-import com.dicoding.submission2.Fragment.NextMatchFragment
+import com.dicoding.submission2.fragment.FavoriteFragment
+import com.dicoding.submission2.fragment.LastMatchFragment
+import com.dicoding.submission2.fragment.NextMatchFragment
 
 class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 

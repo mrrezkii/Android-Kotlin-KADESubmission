@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Model
+package com.dicoding.submission2.model
 
 data class MatchModel(
     var idEvent: String? = null,

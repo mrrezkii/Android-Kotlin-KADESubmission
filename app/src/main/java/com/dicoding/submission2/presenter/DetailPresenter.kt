@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Presenter
+package com.dicoding.submission2.presenter
 
 import android.content.Context
 import android.widget.Toast
@@ -6,10 +6,10 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.dicoding.submission2.Model.DetailModel
-import com.dicoding.submission2.Model.TeamModel
 import com.dicoding.submission2.R
-import com.dicoding.submission2.View.ViewDetail
+import com.dicoding.submission2.model.DetailModel
+import com.dicoding.submission2.model.TeamModel
+import com.dicoding.submission2.view.ViewDetail
 
 class DetailPresenter(private var view: ViewDetail, private var idEvent: String, private var context: Context) {
     private lateinit var det: DetailModel

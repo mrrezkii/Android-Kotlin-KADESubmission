@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Fragment
+package com.dicoding.submission2.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,19 +6,19 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.submission2.Model.MatchModel
-import com.dicoding.submission2.Presenter.FavoritePresenter
 import com.dicoding.submission2.R
 import com.dicoding.submission2.RecyclerViewAdapter
-import com.dicoding.submission2.View.ViewAdapter
+import com.dicoding.submission2.model.MatchModel
+import com.dicoding.submission2.presenter.FavoritePresenter
+import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 
 class FavoriteFragment : Fragment(), ViewAdapter {
     private lateinit var presenter: FavoritePresenter
     private lateinit var v: View
     private var list: MutableList<MatchModel> = mutableListOf()
-    override fun showDataRecycler(list: MutableList<MatchModel>) {
-        this.list = list
+    override fun showDataRecycler(ls: MutableList<MatchModel>) {
+        this.list = ls
         v.swipeRefresh.isRefreshing = false
         if (list.size > 0) {
             v.tvNoData.visibility = View.INVISIBLE

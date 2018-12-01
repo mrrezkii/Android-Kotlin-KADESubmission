@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Presenter
+package com.dicoding.submission2.presenter
 
 import android.content.Context
 import android.widget.Toast
@@ -6,8 +6,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.dicoding.submission2.Model.MatchModel
-import com.dicoding.submission2.View.ViewAdapter
+import com.dicoding.submission2.model.MatchModel
+import com.dicoding.submission2.view.ViewAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 

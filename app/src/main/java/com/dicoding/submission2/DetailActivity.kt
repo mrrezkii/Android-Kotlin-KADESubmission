@@ -8,11 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.dicoding.submission2.Model.DetailModel
-import com.dicoding.submission2.Model.FavoriteModel
-import com.dicoding.submission2.Model.TeamModel
-import com.dicoding.submission2.Presenter.DetailPresenter
-import com.dicoding.submission2.View.ViewDetail
+import com.dicoding.submission2.model.DetailModel
+import com.dicoding.submission2.model.FavoriteModel
+import com.dicoding.submission2.model.TeamModel
+import com.dicoding.submission2.presenter.DetailPresenter
+import com.dicoding.submission2.view.ViewDetail
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.*
 

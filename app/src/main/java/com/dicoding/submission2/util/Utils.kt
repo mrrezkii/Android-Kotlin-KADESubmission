@@ -1,4 +1,4 @@
-package com.dicoding.submission2.Util
+package com.dicoding.submission2.util
 
 import android.view.View
 

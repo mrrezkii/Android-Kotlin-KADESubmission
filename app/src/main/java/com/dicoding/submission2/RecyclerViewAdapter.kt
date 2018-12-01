@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.submission2.Model.MatchModel
+import com.dicoding.submission2.model.MatchModel
 import kotlinx.android.synthetic.main.recyclerview_layout.view.*
 
 class RecyclerViewAdapter(val context: Context, private var ls: MutableList<MatchModel>) :

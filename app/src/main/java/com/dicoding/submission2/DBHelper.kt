@@ -2,7 +2,7 @@ package com.dicoding.submission2
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.dicoding.submission2.Model.FavoriteModel
+import com.dicoding.submission2.model.FavoriteModel
 import org.jetbrains.anko.db.*
 
 class DBHelper(context: Context) : ManagedSQLiteOpenHelper(context, "FavoriteMatch.db") {
