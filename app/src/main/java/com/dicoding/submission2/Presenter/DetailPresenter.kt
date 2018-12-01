@@ -16,6 +16,7 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
     private lateinit var homeTeam: TeamModel
     private lateinit var awayTeam: TeamModel
     fun getData() {
+
         val queue = Volley.newRequestQueue(context)
         val stringRequest = JsonObjectRequest(
             Request.Method.GET,
@@ -24,6 +25,7 @@ class DetailPresenter(private var view: ViewDetail, private var idEvent: String,
             Response.Listener { response ->
                 val obj = response.getJSONArray("events").getJSONObject(0)
                 det = DetailModel(
+                    obj.getString("idEvent"),
                     obj.getString("strDate"),
                     obj.getString("strTime"),
                     obj.getString("idHomeTeam"),
