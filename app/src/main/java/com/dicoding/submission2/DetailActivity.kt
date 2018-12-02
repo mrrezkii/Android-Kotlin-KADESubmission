@@ -12,6 +12,7 @@ import com.dicoding.submission2.model.DetailModel
 import com.dicoding.submission2.model.FavoriteModel
 import com.dicoding.submission2.model.TeamModel
 import com.dicoding.submission2.presenter.DetailPresenter
+import com.dicoding.submission2.repository.DetailRepo
 import com.dicoding.submission2.view.ViewDetail
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.*
@@ -61,7 +62,7 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
             }
             if (!result.isEmpty()) favorite = true
         }
-        val presenter = DetailPresenter(this, intent.getStringExtra("idEvent"), this)
+        val presenter = DetailPresenter(intent.getStringExtra("idEvent"), DetailRepo(this, this))
         presenter.getData()
     }
 

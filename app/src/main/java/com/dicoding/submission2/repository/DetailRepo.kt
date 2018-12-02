@@ -11,11 +11,11 @@ import com.dicoding.submission2.model.DetailModel
 import com.dicoding.submission2.model.TeamModel
 import com.dicoding.submission2.view.ViewDetail
 
-class DetailRepo(private var view: ViewDetail, private var idEvent: String, private var context: Context) {
+class DetailRepo(private var view: ViewDetail, private var context: Context) {
     private lateinit var det: DetailModel
     private lateinit var homeTeam: TeamModel
     private lateinit var awayTeam: TeamModel
-    fun getDetail(endpoint: String) {
+    fun getDetail(idEvent: String) {
         val queue = Volley.newRequestQueue(context)
         val stringRequest = JsonObjectRequest(
             Request.Method.GET,
