@@ -1,4 +1,4 @@
-package com.dicoding.submission2.presenter
+package com.dicoding.submission2.repository
 
 import android.content.Context
 import android.widget.Toast
@@ -11,9 +11,9 @@ import com.dicoding.submission2.view.ViewAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 
-class Presenter(private var view: ViewAdapter, private var endpoint: String, private var context: Context) {
+class MatchRepo(private var view: ViewAdapter, private var endpoint: String, private var context: Context) {
     private val matchList: MutableList<MatchModel> = mutableListOf()
-    fun getData() {
+    fun getMatch(endpoint: String) {
         val queue = Volley.newRequestQueue(context)
         val stringRequestQueue = JsonObjectRequest(
             Request.Method.GET,

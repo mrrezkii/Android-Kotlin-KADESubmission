@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.dicoding.submission2.R
 import com.dicoding.submission2.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
-import com.dicoding.submission2.presenter.Presenter
+import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_last_match.*
 import kotlinx.android.synthetic.main.fragment_last_match.view.*
@@ -36,7 +36,7 @@ class LastMatchFragment : Fragment(), ViewAdapter {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_last_match, container, false)
-        val presenter = Presenter(this, "eventspastleague.php?id=4329", this.context!!)
+        val presenter = MatchPresenter(this, "eventspastleague.php?id=4329", this.context!!)
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
             recyclerViewMatch.adapter?.notifyDataSetChanged()
