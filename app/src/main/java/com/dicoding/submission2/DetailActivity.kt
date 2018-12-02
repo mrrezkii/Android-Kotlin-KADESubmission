@@ -20,9 +20,13 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
     private var favorite = false
     private val database = DBHelper(this)
     private lateinit var detail: DetailModel
+    private lateinit var home: TeamModel
+    private lateinit var away: TeamModel
 
     override fun setData(det: DetailModel, homeTeam: TeamModel, awayTeam: TeamModel) {
         detail = det
+        home = homeTeam
+        away = awayTeam
         progressBar.visibility = View.GONE
         tvDate.text = det.dateEvent
         Glide.with(this).load(homeTeam.emblem).into(ivHome)
@@ -33,7 +37,6 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
             tvHomeScore.text = "-"
         } else {
             tvHomeScore.text = det.intHomeScore
-
         }
         if (det.intAwayScore == "null") {
             tvAwayScore.text = "-"
@@ -76,11 +79,13 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         return when (item.itemId) {
             R.id.add_fav -> {
                 if (!favorite) {
-                    addFav()
-                    item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)
+                    if (addFav()) {
+                        item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)
+                    }
                 } else {
-                    removeFav()
-                    item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp)
+                    if (removeFav()) {
+                        item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp)
+                    }
                 }
                 true
             }
@@ -90,20 +95,39 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         }
     }
 
-    private fun addFav() {
-        database.use {
-            insert(FavoriteModel.TABLE_FAVORITE, FavoriteModel.EVENT_ID to detail.idEvent)
+    private fun addFav(): Boolean {
+        if (this::detail.isInitialized) {
+            database.use {
+                insert(
+                    FavoriteModel.TABLE_FAVORITE, FavoriteModel.EVENT_ID to intent.getStringExtra("idEvent"),
+                    FavoriteModel.DATE_EVENT to detail.dateEvent,
+                    FavoriteModel.HOME_TEAM to home.name,
+                    FavoriteModel.AWAY_TEAM to away.name,
+                    FavoriteModel.HOME_SCORE to detail.intHomeScore,
+                    FavoriteModel.AWAY_SCORE to detail.intAwayScore
+                )
+            }
+            favorite = true
+            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
+            return true
         }
-        favorite = true
-        Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
+        return false
     }
 
-    private fun removeFav() {
-        database.use {
-            delete(FavoriteModel.TABLE_FAVORITE, "(" + FavoriteModel.EVENT_ID + " = {id})", "id" to detail.idEvent)
+    private fun removeFav(): Boolean {
+        if (this::detail.isInitialized) {
+            database.use {
+                delete(
+                    FavoriteModel.TABLE_FAVORITE,
+                    "(" + FavoriteModel.EVENT_ID + " = {id})",
+                    "id" to intent.getStringExtra("idEvent")
+                )
+            }
+            favorite = false
+            Toast.makeText(this, "Removed from favorite", Toast.LENGTH_SHORT).show()
+            return true
         }
-        favorite = false
-        Toast.makeText(this, "Removed from favorite", Toast.LENGTH_SHORT).show()
+        return false
     }
 
 }

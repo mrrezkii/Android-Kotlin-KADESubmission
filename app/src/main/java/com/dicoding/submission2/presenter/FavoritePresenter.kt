@@ -1,14 +1,7 @@
 package com.dicoding.submission2.presenter
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.dicoding.submission2.DBHelper
-import com.dicoding.submission2.R
 import com.dicoding.submission2.model.FavoriteModel
 import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.view.ViewAdapter
@@ -28,36 +21,19 @@ class FavoritePresenter(private val context: Context, private val view: ViewAdap
             } else {
                 var y = 0
                 while (y < result.size) {
-                    val queue = Volley.newRequestQueue(context)
-                    Log.d(
-                        "url",
-                        context.resources.getString(R.string.base_url) + "/lookupevent.php?id=" + result[y].eventId
+                    listMatch.add(
+                        MatchModel(
+                            result[y].eventId,
+                            result[y].dateEvent,
+                            result[y].homeTeam,
+                            result[y].awayTeam,
+                            result[y].homeScore,
+                            result[y].awayScore
+                        )
                     )
-                    val stringRequest = JsonObjectRequest(Request.Method.GET,
-                        context.resources.getString(R.string.base_url) + "/lookupevent.php?id=" + result[y].eventId,
-                        null, Response.Listener { response ->
-                            val arr = response.getJSONArray("events")
-                            val obj = arr.getJSONObject(0)
-                            val match = MatchModel(
-                                obj.getString("idEvent"),
-                                obj.getString("strDate"),
-                                obj.getString("strHomeTeam"),
-                                obj.getString("strAwayTeam"),
-                                obj.getString("intHomeScore"),
-                                obj.getString("intAwayScore")
-                            )
-                            if (match.intHomeScore == "null") match.intHomeScore = ""
-                            if (match.intAwayScore == "null") match.intAwayScore = ""
-                            listMatch.add(match)
-                            if (listMatch.size == result.size) {
-                                view.showDataRecycler(listMatch)
-                            }
-                        }, Response.ErrorListener { error ->
-                            Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
-                        })
-                    queue.add(stringRequest)
                     y = y.inc()
                 }
+                view.showDataRecycler(listMatch)
             }
         }
     }

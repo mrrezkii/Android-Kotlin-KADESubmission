@@ -10,7 +10,12 @@ class DBHelper(context: Context) : ManagedSQLiteOpenHelper(context, "FavoriteMat
         p0!!.createTable(
             FavoriteModel.TABLE_FAVORITE, true,
             FavoriteModel.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-            FavoriteModel.EVENT_ID to TEXT
+            FavoriteModel.EVENT_ID to TEXT,
+            FavoriteModel.DATE_EVENT to TEXT,
+            FavoriteModel.HOME_TEAM to TEXT,
+            FavoriteModel.AWAY_TEAM to TEXT,
+            FavoriteModel.HOME_SCORE to TEXT,
+            FavoriteModel.AWAY_SCORE to TEXT
         )
     }
 
