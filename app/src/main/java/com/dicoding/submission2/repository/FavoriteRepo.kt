@@ -12,7 +12,7 @@ import org.jetbrains.anko.db.select
 class FavoriteRepo(private val context: Context, private val view: ViewAdapter) {
     private val dbHelper = DBHelper(context)
     private val listMatch: MutableList<MatchModel> = mutableListOf()
-    fun getFavorite(endpoint: String) {
+    fun getFavorite() {
         dbHelper.use {
             val result = select(FavoriteModel.TABLE_FAVORITE).exec { parseList(classParser<FavoriteModel>()) }
 

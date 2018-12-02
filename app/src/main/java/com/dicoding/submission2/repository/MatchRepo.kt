@@ -11,7 +11,7 @@ import com.dicoding.submission2.view.ViewAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 
-class MatchRepo(private var view: ViewAdapter, private var endpoint: String, private var context: Context) {
+class MatchRepo(private var view: ViewAdapter, private var context: Context) {
     private val matchList: MutableList<MatchModel> = mutableListOf()
     fun getMatch(endpoint: String) {
         val queue = Volley.newRequestQueue(context)

@@ -10,6 +10,7 @@ import com.dicoding.submission2.R
 import com.dicoding.submission2.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.presenter.FavoritePresenter
+import com.dicoding.submission2.repository.FavoriteRepo
 import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 
@@ -35,7 +36,7 @@ class FavoriteFragment : Fragment(), ViewAdapter {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_favorite, container, false)
-        presenter = FavoritePresenter(this.context!!, this)
+        presenter = FavoritePresenter(FavoriteRepo(this.context!!, this))
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
             list.clear()
