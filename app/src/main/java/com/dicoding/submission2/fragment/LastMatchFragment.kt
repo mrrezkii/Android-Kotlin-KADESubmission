@@ -23,10 +23,10 @@ import kotlinx.android.synthetic.main.fragment_last_match.view.*
  */
 class LastMatchFragment : Fragment(), ViewAdapter {
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
-        recyclerViewMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
-        recyclerViewMatch.adapter?.notifyDataSetChanged()
-        recyclerViewMatch.adapter = recyclerViewMatch.adapter
-        recyclerViewMatch.layoutManager = LinearLayoutManager(this.context)
+        recyclerViewLastMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
+        recyclerViewLastMatch.adapter?.notifyDataSetChanged()
+        recyclerViewLastMatch.adapter = recyclerViewLastMatch.adapter
+        recyclerViewLastMatch.layoutManager = LinearLayoutManager(this.context)
 
 
     }
@@ -40,7 +40,7 @@ class LastMatchFragment : Fragment(), ViewAdapter {
         val presenter = MatchPresenter("eventspastleague.php?id=4329", MatchRepo(this, this.context!!))
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
-            recyclerViewMatch.adapter?.notifyDataSetChanged()
+            recyclerViewLastMatch.adapter?.notifyDataSetChanged()
 
             v.swipeRefresh.isRefreshing = false
         }

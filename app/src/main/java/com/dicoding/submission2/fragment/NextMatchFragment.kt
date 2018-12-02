@@ -13,8 +13,8 @@ import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo
 import com.dicoding.submission2.view.ViewAdapter
-import kotlinx.android.synthetic.main.fragment_last_match.*
 import kotlinx.android.synthetic.main.fragment_last_match.view.*
+import kotlinx.android.synthetic.main.fragment_next_match.*
 
 /**
  * A simple [Fragment] subclass.
@@ -22,10 +22,10 @@ import kotlinx.android.synthetic.main.fragment_last_match.view.*
  */
 class NextMatchFragment : Fragment(), ViewAdapter {
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
-        recyclerViewMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
-        recyclerViewMatch.adapter?.notifyDataSetChanged()
-        recyclerViewMatch.adapter = recyclerViewMatch.adapter
-        recyclerViewMatch.layoutManager = LinearLayoutManager(this.context)
+        recyclerViewNextMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
+        recyclerViewNextMatch.adapter?.notifyDataSetChanged()
+        recyclerViewNextMatch.adapter = recyclerViewNextMatch.adapter
+        recyclerViewNextMatch.layoutManager = LinearLayoutManager(this.context)
 
 
     }
@@ -39,7 +39,7 @@ class NextMatchFragment : Fragment(), ViewAdapter {
         val presenter = MatchPresenter("eventsnextleague.php?id=4329", MatchRepo(this, this.context!!))
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
-            recyclerViewMatch.adapter?.notifyDataSetChanged()
+            recyclerViewNextMatch.adapter?.notifyDataSetChanged()
 
             v.swipeRefresh.isRefreshing = false
         }
