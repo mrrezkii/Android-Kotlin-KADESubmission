@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Football Club</string>
+    <string name="app_name">KADE Submission 1</string>
     <string name="label_football_clubs">Football Club</string>
     <string-array name="club_name">
         <item>Barcelona FC</item>
