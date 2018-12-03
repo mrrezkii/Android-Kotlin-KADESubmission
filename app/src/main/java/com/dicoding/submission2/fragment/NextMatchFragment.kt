@@ -13,19 +13,22 @@ import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo
 import com.dicoding.submission2.view.ViewAdapter
-import kotlinx.android.synthetic.main.fragment_last_match.view.*
 import kotlinx.android.synthetic.main.fragment_next_match.*
+import kotlinx.android.synthetic.main.fragment_next_match.view.*
 
 /**
  * A simple [Fragment] subclass.
  *
  */
 class NextMatchFragment : Fragment(), ViewAdapter {
+    private var list: MutableList<MatchModel> = mutableListOf()
+    private lateinit var v: View
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
-        recyclerViewNextMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
-        recyclerViewNextMatch.adapter?.notifyDataSetChanged()
-        recyclerViewNextMatch.adapter = recyclerViewNextMatch.adapter
-        recyclerViewNextMatch.layoutManager = LinearLayoutManager(this.context)
+        list = ls
+        recyclerViewNextMatch.adapter = RecyclerViewAdapter(this.context!!, list)
+        recyclerViewNextMatch.adapter!!.notifyDataSetChanged()
+        v.recyclerViewNextMatch.adapter = recyclerViewNextMatch.adapter
+        v.recyclerViewNextMatch.layoutManager = LinearLayoutManager(this.context)
 
 
     }

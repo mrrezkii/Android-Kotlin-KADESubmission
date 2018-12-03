@@ -22,11 +22,14 @@ import kotlinx.android.synthetic.main.fragment_last_match.view.*
  *
  */
 class LastMatchFragment : Fragment(), ViewAdapter {
+    private var list: MutableList<MatchModel> = mutableListOf()
+    private lateinit var v: View
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
-        recyclerViewLastMatch.adapter = RecyclerViewAdapter(this.context!!, ls)
-        recyclerViewLastMatch.adapter?.notifyDataSetChanged()
-        recyclerViewLastMatch.adapter = recyclerViewLastMatch.adapter
-        recyclerViewLastMatch.layoutManager = LinearLayoutManager(this.context)
+        list = ls
+        recyclerViewLastMatch.adapter = RecyclerViewAdapter(this.context!!, list)
+        recyclerViewLastMatch.adapter!!.notifyDataSetChanged()
+        v.recyclerViewLastMatch.adapter = recyclerViewLastMatch.adapter
+        v.recyclerViewLastMatch.layoutManager = LinearLayoutManager(this.context)
 
 
     }
