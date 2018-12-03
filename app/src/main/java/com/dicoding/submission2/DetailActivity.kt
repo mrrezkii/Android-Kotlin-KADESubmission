@@ -1,5 +1,9 @@
 package com.dicoding.submission2
 
+import android.annotation.SuppressLint
+import android.app.Application
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -30,8 +34,10 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         away = awayTeam
         progressBar.visibility = View.GONE
         tvDate.text = det.dateEvent
-        Glide.with(this).load(homeTeam.emblem).into(ivHome)
-        Glide.with(this).load(awayTeam.emblem).into(ivAway)
+        if (!this.isFinishing()) {
+            Glide.with(this).load(homeTeam.emblem).into(ivHome)
+            Glide.with(this).load(awayTeam.emblem).into(ivAway)
+        }
         tvHome.text = homeTeam.name
         tvAway.text = awayTeam.name
         if (det.intHomeScore == "null") {
@@ -64,6 +70,7 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         }
         val presenter = DetailPresenter(intent.getStringExtra("idEvent"), DetailRepo(this, this))
         presenter.getData()
+        isAvailable()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -129,6 +136,22 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
             return true
         }
         return false
+    }
+
+    @SuppressLint("ObsoleteSdkInt")
+    fun Context?.isAvailable(): Boolean {
+        if (this == null) {
+            return false
+        } else if (this !is Application) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                if (this is DetailActivity) {
+                    return !this.isDestroyed
+                } else if (this is DetailActivity) {
+                    return !this.isDestroyed
+                }
+            }
+        }
+        return true
     }
 
 }
