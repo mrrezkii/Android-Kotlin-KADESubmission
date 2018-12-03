@@ -18,9 +18,5 @@ class MainActivity : AppCompatActivity() {
         toolbar = supportActionBar!!
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bn_main)
 
-        /*viewpager_main.adapter = MyPagerAdapter(supportFragmentManager)
-        tabs_main.setupWithViewPager(viewpager_main)*/
-
-
     }
 }

@@ -3,7 +3,6 @@ package com.dicoding.submission2.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.dicoding.submission2.fragment.FavoriteFragment
 import com.dicoding.submission2.fragment.LastMatchFragment
 import com.dicoding.submission2.fragment.NextMatchFragment
 
@@ -15,7 +14,6 @@ class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     init {
         pages.add(LastMatchFragment())
         pages.add(NextMatchFragment())
-        pages.add(FavoriteFragment())
     }
     // menentukan fragment yang akan dibuka pada posisi tertentu
     override fun getItem(position: Int): Fragment? {
@@ -30,8 +28,8 @@ class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> "Last Match"
-            1 -> "Next Match"
-            else -> "FavoriteModel"
+            else -> "Next Match"
+
         }
     }
 }

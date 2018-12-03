@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dicoding.submission2.R
+import com.dicoding.submission2.adapter.MyPagerAdapter
+import kotlinx.android.synthetic.main.fragment_match.view.*
 
 class MatchFragment : Fragment() {
     override fun onCreateView(
@@ -15,6 +17,9 @@ class MatchFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_match, container, false)
 
+        val adapter = MyPagerAdapter(childFragmentManager)
+        v.viewpager_main.adapter = adapter
+        v.tabs_main.setupWithViewPager(v.viewpager_main)
         return v
     }
 }
