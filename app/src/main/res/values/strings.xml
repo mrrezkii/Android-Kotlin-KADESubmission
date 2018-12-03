@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Football Match Schedule</string>
     <string name="base_url">https://www.thesportsdb.com/api/v1/json/1/</string>
+
+    <string name="matches">Matches</string>
+    <string name="teams">Team</string>
+    <string name="favorites">Favorites</string>
 </resources>
