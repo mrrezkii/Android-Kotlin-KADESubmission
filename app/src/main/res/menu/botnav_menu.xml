@@ -4,16 +4,19 @@
     <item
             android:id="@+id/matches_menu"
             android:title="@string/matches"
-            android:icon="@drawable/trophy"/>
+            android:icon="@drawable/trophy"
+            android:state_checked="true"/>
 
     <item
             android:id="@+id/teams_menu"
             android:title="@string/teams"
-            android:icon="@drawable/account_group_outline"/>
+            android:icon="@drawable/account_group_outline"
+            android:state_checked="true"/>
 
     <item
             android:id="@+id/favorites_menu"
             android:title="@string/favorites"
-            android:icon="@drawable/star_circle"/>
+            android:icon="@drawable/star_circle"
+            android:state_checked="true"/>
 
 </menu>
