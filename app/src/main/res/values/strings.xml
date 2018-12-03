@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Football Match Schedule</string>
+    <string name="app_name">KADE Submission 3</string>
     <string name="base_url">https://www.thesportsdb.com/api/v1/json/1/</string>
 </resources>
