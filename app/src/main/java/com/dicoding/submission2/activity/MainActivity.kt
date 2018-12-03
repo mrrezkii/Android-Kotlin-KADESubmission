@@ -1,7 +1,9 @@
-package com.dicoding.submission2
+package com.dicoding.submission2.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.dicoding.submission2.R
+import com.dicoding.submission2.adapter.MyPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 

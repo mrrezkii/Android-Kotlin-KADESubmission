@@ -1,4 +1,4 @@
-package com.dicoding.submission2
+package com.dicoding.submission2.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

@@ -10,6 +10,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.dicoding.submission2.R.id.*
+import com.dicoding.submission2.activity.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

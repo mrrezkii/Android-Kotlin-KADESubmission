@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dicoding.submission2.R
-import com.dicoding.submission2.RecyclerViewAdapter
+import com.dicoding.submission2.adapter.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo

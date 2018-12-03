@@ -1,4 +1,4 @@
-package com.dicoding.submission2
+package com.dicoding.submission2.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.dicoding.submission2.R
+import com.dicoding.submission2.activity.DetailActivity
 import com.dicoding.submission2.model.MatchModel
 import kotlinx.android.synthetic.main.recyclerview_layout.view.*
 
@@ -13,7 +15,13 @@ class RecyclerViewAdapter(val context: Context, private var ls: MutableList<Matc
     RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recyclerview_layout, p0, false))
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.recyclerview_layout,
+                p0,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = ls.size

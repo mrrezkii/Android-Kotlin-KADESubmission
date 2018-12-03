@@ -1,4 +1,4 @@
-package com.dicoding.submission2
+package com.dicoding.submission2.activity
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -12,6 +12,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.dicoding.submission2.DBHelper
+import com.dicoding.submission2.R
 import com.dicoding.submission2.model.DetailModel
 import com.dicoding.submission2.model.FavoriteModel
 import com.dicoding.submission2.model.TeamModel
@@ -34,7 +36,7 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         away = awayTeam
         progressBar.visibility = View.GONE
         tvDate.text = det.dateEvent
-        if (!this.isFinishing()) {
+        if (!this.isFinishing) {
             Glide.with(this).load(homeTeam.emblem).into(ivHome)
             Glide.with(this).load(awayTeam.emblem).into(ivAway)
         }
@@ -76,9 +78,15 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.fav_menu, menu)
         if (favorite) {
-            menu?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)
+            menu?.getItem(0)?.icon = ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_favorite_black_24dp
+            )
         } else {
-            menu?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp)
+            menu?.getItem(0)?.icon = ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_favorite_border_black_24dp
+            )
         }
         return true
     }
@@ -88,11 +96,17 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
             R.id.add_fav -> {
                 if (!favorite) {
                     if (addFav()) {
-                        item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)
+                        item.icon = ContextCompat.getDrawable(
+                            this,
+                            R.drawable.ic_favorite_black_24dp
+                        )
                     }
                 } else {
                     if (removeFav()) {
-                        item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp)
+                        item.icon = ContextCompat.getDrawable(
+                            this,
+                            R.drawable.ic_favorite_border_black_24dp
+                        )
                     }
                 }
                 true

@@ -18,6 +18,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.dicoding.submission2.R.id.recyclerViewLastMatch
 import com.dicoding.submission2.R.id.viewpager_main
+import com.dicoding.submission2.activity.MainActivity
 import org.hamcrest.Matchers.allOf
 import org.junit.Before
 import org.junit.Rule
