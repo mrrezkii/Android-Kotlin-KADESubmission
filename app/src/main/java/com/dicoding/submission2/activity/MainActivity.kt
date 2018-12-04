@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import com.dicoding.submission2.R
 import com.dicoding.submission2.R.id.*
-import com.dicoding.submission2.fragment.MatchFavoriteFragment
+import com.dicoding.submission2.fragment.FavoriteFragment
 import com.dicoding.submission2.fragment.MatchFragment
 import com.dicoding.submission2.fragment.TeamFragment
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
             favorites_menu -> {
                 toolbar.title = "Favorite"
-                val fl = MatchFavoriteFragment()
+                val fl = FavoriteFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fl_container, fl).commit()
                 return@OnNavigationItemSelectedListener true
             }

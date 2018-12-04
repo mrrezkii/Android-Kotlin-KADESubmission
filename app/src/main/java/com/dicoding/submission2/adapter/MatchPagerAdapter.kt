@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.dicoding.submission2.fragment.LastMatchFragment
 import com.dicoding.submission2.fragment.NextMatchFragment
 
-class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class MatchPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     // sebuah list yang menampung objek Fragment
     private val pages: MutableList<Fragment> = mutableListOf()
