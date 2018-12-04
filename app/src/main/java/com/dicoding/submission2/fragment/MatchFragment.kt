@@ -1,15 +1,22 @@
 package com.dicoding.submission2.fragment
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.view.*
 import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.MatchPagerAdapter
+import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_match.view.*
 
 class MatchFragment : Fragment() {
+    private var searchView: SearchView? = null
+    private lateinit var queryTextListener: SearchView.OnQueryTextListener
+    private lateinit var searchItem: MenuItem
+    private lateinit var searchManager: SearchManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -18,8 +25,59 @@ class MatchFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_match, container, false)
 
         val adapter = MatchPagerAdapter(childFragmentManager)
+        setHasOptionsMenu(true)
         v.viewpager_main.adapter = adapter
         v.tabs_main.setupWithViewPager(v.viewpager_main)
         return v
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.search_menu, menu)
+        searchItem = menu?.findItem(R.id.action_search) as MenuItem
+        searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+
+        searchView = searchItem.actionView as SearchView
+
+        if (searchView != null) {
+            searchView?.setSearchableInfo(
+                searchManager.getSearchableInfo(activity?.componentName)
+            )
+
+            queryTextListener = object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    search(query)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String): Boolean {
+                    search(newText)
+                    return true
+                }
+            }
+            searchView?.setOnQueryTextListener(queryTextListener)
+        }
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_search ->
+                return false
+            else -> {
+            }
+        }
+        searchView?.setOnQueryTextListener(queryTextListener)
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun search(s: String) {
+        if (!s.equals("")) {
+            tabs_main.visibility = View.INVISIBLE
+            viewpager_main.visibility = View.INVISIBLE
+        } else {
+            tabs_main.visibility = View.VISIBLE
+            viewpager_main.visibility = View.VISIBLE
+        }
     }
 }
