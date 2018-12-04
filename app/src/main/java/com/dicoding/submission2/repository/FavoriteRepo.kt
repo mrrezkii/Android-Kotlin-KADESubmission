@@ -2,7 +2,7 @@ package com.dicoding.submission2.repository
 
 import android.content.Context
 import com.dicoding.submission2.DBHelper
-import com.dicoding.submission2.model.FavoriteModel
+import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.view.ViewAdapter
 import org.jetbrains.anko.db.classParser
@@ -14,7 +14,7 @@ class FavoriteRepo(private val context: Context, private val view: ViewAdapter) 
     private val listMatch: MutableList<MatchModel> = mutableListOf()
     fun getFavorite() {
         dbHelper.use {
-            val result = select(FavoriteModel.TABLE_FAVORITE).exec { parseList(classParser<FavoriteModel>()) }
+            val result = select(MatchFavoriteModel.TABLE_FAVORITE).exec { parseList(classParser<MatchFavoriteModel>()) }
 
             if (result.isEmpty()) {
                 view.showDataRecycler(listMatch)

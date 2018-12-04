@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.submission2.DBHelper
 import com.dicoding.submission2.R
 import com.dicoding.submission2.model.DetailModel
-import com.dicoding.submission2.model.FavoriteModel
+import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.TeamModel
 import com.dicoding.submission2.presenter.DetailPresenter
 import com.dicoding.submission2.repository.DetailRepo
@@ -60,12 +60,12 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         database.use {
-            val result = select(FavoriteModel.TABLE_FAVORITE).whereArgs(
-                "(" + FavoriteModel.EVENT_ID + ") = {id}",
+            val result = select(MatchFavoriteModel.TABLE_FAVORITE).whereArgs(
+                "(" + MatchFavoriteModel.EVENT_ID + ") = {id}",
                 "id" to intent.getStringExtra("idEvent")
             ).exec {
                 parseList(
-                    classParser<FavoriteModel>()
+                    classParser<MatchFavoriteModel>()
                 )
             }
             if (!result.isEmpty()) favorite = true
@@ -121,12 +121,12 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         if (this::detail.isInitialized) {
             database.use {
                 insert(
-                    FavoriteModel.TABLE_FAVORITE, FavoriteModel.EVENT_ID to intent.getStringExtra("idEvent"),
-                    FavoriteModel.DATE_EVENT to detail.dateEvent,
-                    FavoriteModel.HOME_TEAM to home.name,
-                    FavoriteModel.AWAY_TEAM to away.name,
-                    FavoriteModel.HOME_SCORE to detail.intHomeScore,
-                    FavoriteModel.AWAY_SCORE to detail.intAwayScore
+                    MatchFavoriteModel.TABLE_FAVORITE, MatchFavoriteModel.EVENT_ID to intent.getStringExtra("idEvent"),
+                    MatchFavoriteModel.DATE_EVENT to detail.dateEvent,
+                    MatchFavoriteModel.HOME_TEAM to home.name,
+                    MatchFavoriteModel.AWAY_TEAM to away.name,
+                    MatchFavoriteModel.HOME_SCORE to detail.intHomeScore,
+                    MatchFavoriteModel.AWAY_SCORE to detail.intAwayScore
                 )
             }
             favorite = true
@@ -140,8 +140,8 @@ class DetailActivity : AppCompatActivity(), ViewDetail {
         if (this::detail.isInitialized) {
             database.use {
                 delete(
-                    FavoriteModel.TABLE_FAVORITE,
-                    "(" + FavoriteModel.EVENT_ID + " = {id})",
+                    MatchFavoriteModel.TABLE_FAVORITE,
+                    "(" + MatchFavoriteModel.EVENT_ID + " = {id})",
                     "id" to intent.getStringExtra("idEvent")
                 )
             }

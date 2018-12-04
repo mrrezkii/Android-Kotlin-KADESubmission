@@ -1,6 +1,6 @@
 package com.dicoding.submission2.model
 
-data class FavoriteModel(
+data class MatchFavoriteModel(
     val id: Int?,
     val eventId: String?,
     val dateEvent: String?,
