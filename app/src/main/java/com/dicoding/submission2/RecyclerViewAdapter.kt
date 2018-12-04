@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.dicoding.submission2.model.MatchModel
 import kotlinx.android.synthetic.main.recyclerview_layout.view.*
 
-class RecyclerViewAdapter(val context: Context, private var ls: MutableList<MatchModel>) :
+class RecyclerViewAdapter(val context: Context?, private var ls: MutableList<MatchModel>) :
     RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {

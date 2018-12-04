@@ -24,27 +24,28 @@ import kotlinx.android.synthetic.main.fragment_last_match.view.*
 class LastMatchFragment : Fragment(), ViewAdapter {
     private var list: MutableList<MatchModel> = mutableListOf()
     private lateinit var v: View
+    private lateinit var adapter: RecyclerViewAdapter
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
         list = ls
-        recyclerViewLastMatch.adapter = RecyclerViewAdapter(this.context!!, list)
-        recyclerViewLastMatch.adapter!!.notifyDataSetChanged()
-        v.recyclerViewLastMatch.adapter = recyclerViewLastMatch.adapter
+        adapter = RecyclerViewAdapter(this.context, list)
+        adapter.notifyDataSetChanged()
+        v.recyclerViewLastMatch.adapter = adapter
         v.recyclerViewLastMatch.layoutManager = LinearLayoutManager(this.context)
 
 
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_last_match, container, false)
+        v = inflater.inflate(R.layout.fragment_last_match, container, false)
         val presenter = MatchPresenter("eventspastleague.php?id=4329", MatchRepo(this, this.context!!))
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
             recyclerViewLastMatch.adapter?.notifyDataSetChanged()
-
             v.swipeRefresh.isRefreshing = false
         }
 
