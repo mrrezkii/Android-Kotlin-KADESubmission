@@ -5,4 +5,29 @@
     <string name="matches">Matches</string>
     <string name="teams">Team</string>
     <string name="favorites">Favorites</string>
+
+    <array name="league_name">
+        <item>English Premier League</item>
+        <item>English League Championship</item>
+        <item>Scottish Premier League</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+        <item>Greek Superleague Greece</item>
+        <item>Dutch Eredivisie</item>
+        <item>Belgian Jupiler League</item>
+        <item>Turkish Super Lig</item>
+        <item>Danish Superliga</item>
+        <item>Portuguese Primeira Liga</item>
+        <item>American Major League Soccer</item>
+        <item>Swedish Allsvenskan</item>
+        <item>Mexican Primera League</item>
+        <item>Brazilian Brasileirao</item>
+        <item>Ukrainian Premier League</item>
+        <item>Russian Football Premier League</item>
+        <item>Australian A-League</item>
+        <item>Eliteserien</item>
+        <item>Chinese Super League</item>
+    </array>
 </resources>
