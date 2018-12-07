@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.dicoding.submission2.fragment.DetailDetailFragment
-import com.dicoding.submission2.fragment.DetailMemberFragment
+import com.dicoding.submission2.fragment.DetailPlayerFragment
 
 
 class DetailTeamPagerAdapter(fm: FragmentManager, val bundle: Bundle) : FragmentPagerAdapter(fm) {
@@ -18,7 +18,7 @@ class DetailTeamPagerAdapter(fm: FragmentManager, val bundle: Bundle) : Fragment
                 return fragment
             }
             1 -> {
-                val fragment = DetailMemberFragment()
+                val fragment = DetailPlayerFragment()
                 fragment.arguments = bundle
                 return fragment
             }
