@@ -24,15 +24,19 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
             Glide.with(this).load(detail.emblem).into(iv_header)
         }
         collapsing_toolbar.title = detail.name
+        val adapter = DetailTeamPagerAdapter(supportFragmentManager, bundle)
+        viewpager_main.adapter = adapter
+        viewpager_main.setOnTouchListener { _, _ ->
+            viewpager_main.parent.requestDisallowInterceptTouchEvent(true)
+            false
+        }
+        tabs_main.setupWithViewPager(viewpager_main)
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_team)
-        val adapter = DetailTeamPagerAdapter(supportFragmentManager)
-        viewpager_main.adapter = adapter
-        tabs_main.setupWithViewPager(viewpager_main)
         val teamDetailPresenter = TeamDetailPresenter(intent.getStringExtra("id"), TeamDetailRepo(this, this))
         teamDetailPresenter.getData()
         nested.isFillViewport = true

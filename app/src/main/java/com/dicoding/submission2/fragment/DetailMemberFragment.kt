@@ -13,7 +13,7 @@ class DetailMemberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_member_detail, container, false)
+        val v = inflater.inflate(R.layout.fragment_detail_detail, container, false)
         return v
     }
 }
