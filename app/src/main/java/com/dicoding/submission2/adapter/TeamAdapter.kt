@@ -1,12 +1,14 @@
 package com.dicoding.submission2.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.dicoding.submission2.R
+import com.dicoding.submission2.activity.DetailTeamActivity
 import com.dicoding.submission2.model.TeamListModel
 import kotlinx.android.synthetic.main.recyclerviewteam_layout.view.*
 
@@ -27,6 +29,11 @@ class TeamAdapter(val con: Context, val team: MutableList<TeamListModel>) :
         fun bindItem(team: TeamListModel) {
             itemView.tvName.text = team.name
             Glide.with(itemView).load(team.emblem).into(itemView.ivList)
+            itemView.layout.setOnClickListener {
+                val i = Intent(itemView.context, DetailTeamActivity::class.java)
+                i.putExtra("id", team.id)
+                itemView.context.startActivity(i)
+            }
         }
     }
 }

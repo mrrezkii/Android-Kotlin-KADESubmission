@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".activity.DetailActivity">
         </activity>
+        <activity android:name=".activity.DetailTeamActivity">
+        </activity>
     </application>
 
 </manifest>
