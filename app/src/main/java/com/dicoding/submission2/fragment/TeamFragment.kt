@@ -4,27 +4,56 @@ import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.*
 import android.widget.AdapterView
+import com.dicoding.submission2.LeagueID
 import com.dicoding.submission2.R
+import com.dicoding.submission2.adapter.TeamAdapter
+import com.dicoding.submission2.model.TeamListModel
+import com.dicoding.submission2.presenter.TeamPresenter
+import com.dicoding.submission2.repository.TeamRepo
+import com.dicoding.submission2.view.ViewTeam
 import kotlinx.android.synthetic.main.fragment_team.view.*
 
-class TeamFragment : Fragment() {
+class TeamFragment : Fragment(), ViewTeam {
+    override fun showDataRecycler(ls: MutableList<TeamListModel>) {
+        v.swipeRefresh.isRefreshing = false
+        list = ls
+        adapter = TeamAdapter(this.context!!, list)
+        adapter.notifyDataSetChanged()
+        v.recyclerViewTeamList.adapter = adapter
+        v.recyclerViewTeamList.layoutManager = LinearLayoutManager(this.context)
+    }
+
+    override fun onLoading() {
+        list.clear()
+        adapter.notifyDataSetChanged()
+        v.swipeRefresh.isRefreshing = true
+    }
+
     private var searchView: SearchView? = null
     private lateinit var queryTextListener: SearchView.OnQueryTextListener
     private lateinit var searchItem: MenuItem
     private lateinit var searchManager: SearchManager
     private lateinit var id: Array<String>
     private var loc: Int = 0
+    private lateinit var v: View
+    private var list: MutableList<TeamListModel> = mutableListOf()
+    private lateinit var adapter: TeamAdapter
+    private lateinit var presenter: TeamPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_team, container, false)
+        v = inflater.inflate(R.layout.fragment_team, container, false)
         setHasOptionsMenu(true)
+        id = LeagueID.id.value
+        presenter = TeamPresenter(TeamRepo(this, this.context!!))
+        presenter.getData("lookup_all_teams.php?id=" + id[loc])
         v.spn_league.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
@@ -32,7 +61,7 @@ class TeamFragment : Fragment() {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 loc = p2
-                //presenter.getData("lookup_all_teams.php?id=" + id[loc])
+                presenter.getData("lookup_all_teams.php?id=" + id[loc])
             }
 
         }

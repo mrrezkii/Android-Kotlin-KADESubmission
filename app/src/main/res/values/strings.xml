@@ -30,4 +30,6 @@
         <item>Eliteserien</item>
         <item>Chinese Super League</item>
     </array>
+
+    <string name="team_list_image">Team Emblem</string>
 </resources>
