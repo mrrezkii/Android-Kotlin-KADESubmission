@@ -1,5 +1,5 @@
 package com.dicoding.submission2.model
 
 data class DetailModelResponse(
-    val events: List<DetailModel>? = null
+    val detail: List<DetailModel>? = null
 )
