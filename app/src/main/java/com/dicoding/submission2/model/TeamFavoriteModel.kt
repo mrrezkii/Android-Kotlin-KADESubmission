@@ -12,9 +12,9 @@ data class TeamFavoriteModel(
         const val TABLE_FAVORITE_TEAM: String = "TABLE_FAVORITE_TEAM"
         const val ID: String = "ID_"
         const val TEAM_ID: String = "TEAM_ID"
-        const val STR_TEAM = "STR_TEAM"
-        const val STR_TEAM_BADGE = "STR_TEAM_BADGE"
-        const val STR_TEAM_DESCRIPTION = "STR_TEAM_DESCRIPTION"
+        const val STR_TEAM: String = "STR_TEAM"
+        const val STR_TEAM_BADGE: String = "STR_TEAM_BADGE"
+        const val STR_TEAM_DESCRIPTION: String = "STR_TEAM_DESCRIPTION"
 
     }
 }

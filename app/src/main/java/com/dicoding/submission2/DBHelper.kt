@@ -20,7 +20,7 @@ class DBHelper(context: Context) : ManagedSQLiteOpenHelper(context, "FavoriteMat
         )
         p0.createTable(
             TeamFavoriteModel.TABLE_FAVORITE_TEAM, true,
-            TeamFavoriteModel.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            MatchFavoriteModel.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
             TeamFavoriteModel.TEAM_ID to TEXT,
             TeamFavoriteModel.STR_TEAM to TEXT,
             TeamFavoriteModel.STR_TEAM_BADGE to TEXT,

@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.submission2.DBHelper
 import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.DetailTeamPagerAdapter
+import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.TeamFavoriteModel
 import com.dicoding.submission2.model.TeamListModel
 import com.dicoding.submission2.presenter.TeamDetailPresenter
@@ -57,7 +58,7 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
                 "id" to intent.getStringExtra("id")
             ).exec {
                 parseList(
-                    classParser<TeamListModel>()
+                    classParser<MatchFavoriteModel>()
                 )
             }
             if (!result.isEmpty()) favorite = true
