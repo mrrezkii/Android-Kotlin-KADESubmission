@@ -1,11 +1,13 @@
 package com.dicoding.submission2
 
-import com.dicoding.submission2.presenter.DetailPresenter
-import com.dicoding.submission2.presenter.FavoritePresenter
+import com.dicoding.submission2.model.MatchModelResponse
 import com.dicoding.submission2.presenter.MatchPresenter
-import com.dicoding.submission2.repository.DetailRepo
-import com.dicoding.submission2.repository.FavoriteRepo
 import com.dicoding.submission2.repository.MatchRepo
+import com.dicoding.submission2.repository.MatchRepoCallback
+import com.dicoding.submission2.view.MatchView
+import com.nhaarman.mockito_kotlin.argumentCaptor
+import com.nhaarman.mockito_kotlin.eq
+import com.nhaarman.mockito_kotlin.verify
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -18,41 +20,57 @@ import org.mockito.MockitoAnnotations
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class UnitTest {
-    private lateinit var matchPresenter: MatchPresenter
-    private lateinit var detailPresenter: DetailPresenter
-    private lateinit var favPresenter: FavoritePresenter
+    @Mock
+    private lateinit var view: MatchView
 
     @Mock
-    private lateinit var repo: MatchRepo
+    private lateinit var matchRepository: MatchRepo
+
     @Mock
-    private lateinit var detRepo: DetailRepo
-    @Mock
-    private lateinit var favRepo: FavoriteRepo
+    private lateinit var matchResponse: MatchModelResponse
+
+    private lateinit var matchPresenter: MatchPresenter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        matchPresenter = MatchPresenter("eventspastleague.php?id=4328", repo)
-        detailPresenter = DetailPresenter("lookupevent.php?id=576504", detRepo)
-        favPresenter = FavoritePresenter(favRepo)
+        matchPresenter = MatchPresenter(view, matchRepository)
     }
 
 
     @Test
-    fun testGetMatchList() {
-        matchPresenter.getData()
-        Mockito.verify(repo).getMatch("eventspastleague.php?id=4328")
+    fun getMatchLoadedTest() {
+
+        val id = "eventsnextleague.php?id=4329"
+
+        matchPresenter.getData(id)
+        argumentCaptor<MatchRepoCallback<MatchModelResponse?>>().apply {
+
+            verify(matchRepository).getMatch(eq(id), capture())
+            firstValue.onDataLoaded(matchResponse)
+        }
+
+        Mockito.verify(view).onShowLoading()
+        Mockito.verify(view).onDataLoaded(matchResponse)
+        Mockito.verify(view).onHideLoading()
     }
 
-    @Test
-    fun testGetTeamDetail() {
-        detailPresenter.getData()
-        Mockito.verify(detRepo).getDetail("lookupevent.php?id=576504")
-    }
 
     @Test
-    fun testGetFavorite() {
-        favPresenter.getData()
-        Mockito.verify(favRepo).getFavorite()
+    fun getMatchErrorTest() {
+
+        matchPresenter.getData("")
+
+        argumentCaptor<MatchRepoCallback<MatchModelResponse?>>().apply {
+
+            verify(matchRepository).getMatch(eq(""), capture())
+            firstValue.onDataError()
+        }
+
+        Mockito.verify(view).onShowLoading()
+        Mockito.verify(view).onDataError()
+        Mockito.verify(view).onHideLoading()
     }
+
+
 }
