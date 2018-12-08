@@ -24,7 +24,7 @@ class DBHelper(context: Context) : ManagedSQLiteOpenHelper(context, "FavoriteMat
             TeamFavoriteModel.TEAM_ID to TEXT,
             TeamFavoriteModel.STR_TEAM to TEXT,
             TeamFavoriteModel.STR_TEAM_BADGE to TEXT,
-            TeamFavoriteModel.STR_TEAM_DESCTIPTION to TEXT
+            TeamFavoriteModel.STR_TEAM_DESCRIPTION to TEXT
         )
     }
 
