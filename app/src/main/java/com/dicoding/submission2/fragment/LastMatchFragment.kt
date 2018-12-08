@@ -15,7 +15,6 @@ import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo
 import com.dicoding.submission2.view.ViewAdapter
-import kotlinx.android.synthetic.main.fragment_last_match.*
 import kotlinx.android.synthetic.main.fragment_last_match.view.*
 
 
@@ -24,19 +23,26 @@ import kotlinx.android.synthetic.main.fragment_last_match.view.*
  *
  */
 class LastMatchFragment : Fragment(), ViewAdapter {
+    override fun onLoading() {
+        list.clear()
+
+        adapter.notifyDataSetChanged()
+
+        v.swipeRefresh.isRefreshing = true
+    }
+
     private var list: MutableList<MatchModel> = mutableListOf()
     private lateinit var v: View
     private lateinit var adapter: RecyclerViewAdapter
     private lateinit var id: Array<String>
     private var loc: Int = 0
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
+        v.swipeRefresh.isRefreshing = false
         list = ls
         adapter = RecyclerViewAdapter(this.context, list)
         adapter.notifyDataSetChanged()
         v.recyclerViewLastMatch.adapter = adapter
         v.recyclerViewLastMatch.layoutManager = LinearLayoutManager(this.context)
-
-
     }
 
 
@@ -51,9 +57,8 @@ class LastMatchFragment : Fragment(), ViewAdapter {
         val presenter = MatchPresenter(MatchRepo(this, this.context!!))
         presenter.getData("eventspastleague.php?id=" + id[loc])
         v.swipeRefresh.setOnRefreshListener {
-            recyclerViewLastMatch.adapter?.notifyDataSetChanged()
-
-            v.swipeRefresh.isRefreshing = false
+            onLoading()
+            presenter.getData("eventspastleague.php?id=" + id[loc])
         }
         v.spn_league.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {

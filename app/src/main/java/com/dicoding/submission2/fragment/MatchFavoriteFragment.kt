@@ -15,6 +15,12 @@ import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_favorite_match.view.*
 
 class MatchFavoriteFragment : Fragment(), ViewAdapter {
+    override fun onLoading() {
+        list.clear()
+        v.recyclerViewFavorite.adapter?.notifyDataSetChanged()
+        v.swipeRefresh.isRefreshing = true
+    }
+
     private lateinit var presenter: FavoritePresenter
     private lateinit var v: View
     private var list: MutableList<MatchModel> = mutableListOf()
@@ -40,9 +46,7 @@ class MatchFavoriteFragment : Fragment(), ViewAdapter {
         presenter = FavoritePresenter(FavoriteRepo(this.context!!, this))
         presenter.getData()
         v.swipeRefresh.setOnRefreshListener {
-            list.clear()
-            v.recyclerViewFavorite.adapter?.notifyDataSetChanged()
-            v.swipeRefresh.isRefreshing = true
+            onLoading()
             presenter.getData()
         }
 

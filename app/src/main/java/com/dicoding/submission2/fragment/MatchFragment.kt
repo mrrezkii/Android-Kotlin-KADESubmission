@@ -18,6 +18,10 @@ import kotlinx.android.synthetic.main.fragment_match.*
 import kotlinx.android.synthetic.main.fragment_match.view.*
 
 class MatchFragment : Fragment(), ViewAdapter {
+    override fun onLoading() {
+
+    }
+
     override fun showDataRecycler(ls: MutableList<MatchModel>) {
         recyclerMatch.adapter = RecyclerViewAdapter(this.context, ls)
         recyclerMatch.layoutManager = LinearLayoutManager(this.context)
