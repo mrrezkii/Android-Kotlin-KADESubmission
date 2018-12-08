@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import com.dicoding.submission2.LeagueID
 import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
@@ -45,8 +46,10 @@ class LastMatchFragment : Fragment(), ViewAdapter {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_last_match, container, false)
-        val presenter = MatchPresenter("eventspastleague.php?id=4329", MatchRepo(this, this.context!!))
-        presenter.getData()
+        adapter = RecyclerViewAdapter(this.context!!, list)
+        id = LeagueID.id.value
+        val presenter = MatchPresenter(MatchRepo(this, this.context!!))
+        presenter.getData("eventspastleague.php?id=" + id[loc])
         v.swipeRefresh.setOnRefreshListener {
             recyclerViewLastMatch.adapter?.notifyDataSetChanged()
 
@@ -59,7 +62,7 @@ class LastMatchFragment : Fragment(), ViewAdapter {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 loc = p2
-                //presenter.getData("eventspastleague.php?id=" + id[loc])
+                presenter.getData("eventspastleague.php?id=" + id[loc])
             }
 
         }

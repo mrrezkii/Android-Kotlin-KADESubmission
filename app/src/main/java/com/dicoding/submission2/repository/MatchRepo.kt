@@ -70,7 +70,7 @@ class MatchRepo(private var view: ViewAdapter, private var context: Context) {
                         obj.getString("intAwayScore")
                     )
                     if (match.intHomeScore == "null") match.intHomeScore = ""
-                    if (match.intHomeScore == "null") match.intHomeScore = ""
+                    if (match.intAwayScore == "null") match.intAwayScore = ""
                     if (match.dateEvent == "null") match.dateEvent = ""
                     matchList.add(match)
 
