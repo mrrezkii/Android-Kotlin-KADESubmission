@@ -27,8 +27,10 @@ class TeamFragment : Fragment(), ViewTeam {
         v.recyclerViewTeamList.layoutManager = LinearLayoutManager(this.context)
     }
 
+    private lateinit var adapter: TeamAdapter
     override fun onLoading() {
         list.clear()
+        adapter = TeamAdapter(this.context!!, list)
         adapter.notifyDataSetChanged()
         v.swipeRefresh.isRefreshing = true
     }
@@ -41,7 +43,6 @@ class TeamFragment : Fragment(), ViewTeam {
     private var loc: Int = 0
     private lateinit var v: View
     private var list: MutableList<TeamListModel> = mutableListOf()
-    private lateinit var adapter: TeamAdapter
     private lateinit var presenter: TeamPresenter
 
     override fun onCreateView(
@@ -54,12 +55,17 @@ class TeamFragment : Fragment(), ViewTeam {
         id = LeagueID.id.value
         presenter = TeamPresenter(TeamRepo(this, this.context!!))
         presenter.getData("lookup_all_teams.php?id=" + id[loc])
+        v.swipeRefresh.setOnRefreshListener {
+            onLoading()
+            presenter.getData("lookup_all_teams.php?id=" + id[loc])
+        }
         v.spn_league.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                onLoading()
                 loc = p2
                 presenter.getData("lookup_all_teams.php?id=" + id[loc])
             }
@@ -111,9 +117,11 @@ class TeamFragment : Fragment(), ViewTeam {
 
     fun search(s: String) {
         if (!s.equals("")) {
-            //kondisi
+            v.spn_league.visibility = View.GONE
+            presenter.getData("searchteams.php?t=" + s)
         } else {
-            //kondisi
+            v.spn_league.visibility = View.VISIBLE
+            presenter.getData("lookup_all_teams.php?id=" + id[loc])
         }
     }
 }
