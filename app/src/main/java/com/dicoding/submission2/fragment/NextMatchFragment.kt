@@ -12,8 +12,10 @@ import com.dicoding.submission2.LeagueID
 import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
+import com.dicoding.submission2.model.MatchModelResponse
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo
+import com.dicoding.submission2.view.MatchView
 import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_next_match.view.*
 
@@ -21,7 +23,23 @@ import kotlinx.android.synthetic.main.fragment_next_match.view.*
  * A simple [Fragment] subclass.
  *
  */
-class NextMatchFragment : Fragment(), ViewAdapter {
+class NextMatchFragment : Fragment(), MatchView, ViewAdapter {
+    override fun onShowLoading() {
+
+    }
+
+    override fun onHideLoading() {
+
+    }
+
+    override fun onDataLoaded(data: MatchModelResponse?) {
+
+    }
+
+    override fun onDataError() {
+
+    }
+
     override fun onLoading() {
         list.clear()
 
@@ -54,7 +72,7 @@ class NextMatchFragment : Fragment(), ViewAdapter {
         v = inflater.inflate(R.layout.fragment_next_match, container, false)
         adapter = RecyclerViewAdapter(this.context!!, list)
         id = LeagueID.id.value
-        val presenter = MatchPresenter(MatchRepo(this, this.context!!))
+        val presenter = MatchPresenter(this, MatchRepo(this, this.context!!))
         presenter.getData("eventsnextleague.php?id=" + id[loc])
         v.swipeRefresh.setOnRefreshListener {
             onLoading()

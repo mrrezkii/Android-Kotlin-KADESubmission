@@ -11,13 +11,31 @@ import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.MatchPagerAdapter
 import com.dicoding.submission2.adapter.RecyclerViewAdapter
 import com.dicoding.submission2.model.MatchModel
+import com.dicoding.submission2.model.MatchModelResponse
 import com.dicoding.submission2.presenter.MatchPresenter
 import com.dicoding.submission2.repository.MatchRepo
+import com.dicoding.submission2.view.MatchView
 import com.dicoding.submission2.view.ViewAdapter
 import kotlinx.android.synthetic.main.fragment_match.*
 import kotlinx.android.synthetic.main.fragment_match.view.*
 
-class MatchFragment : Fragment(), ViewAdapter {
+class MatchFragment : Fragment(), MatchView, ViewAdapter {
+    override fun onShowLoading() {
+
+    }
+
+    override fun onHideLoading() {
+
+    }
+
+    override fun onDataLoaded(data: MatchModelResponse?) {
+
+    }
+
+    override fun onDataError() {
+
+    }
+
     override fun onLoading() {
 
     }
@@ -91,7 +109,7 @@ class MatchFragment : Fragment(), ViewAdapter {
             tabs_main.visibility = View.INVISIBLE
             viewpager_main.visibility = View.INVISIBLE
             recyclerMatch.visibility = View.VISIBLE
-            val presenter = MatchPresenter(MatchRepo(this, this.context!!))
+            val presenter = MatchPresenter(this, MatchRepo(this, this.context!!))
             presenter.getSearchData("searchevents.php?e=" + s)
         } else {
             tabs_main.visibility = View.VISIBLE

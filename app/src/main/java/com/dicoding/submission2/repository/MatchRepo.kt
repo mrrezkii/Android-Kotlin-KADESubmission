@@ -9,13 +9,19 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.dicoding.submission2.R
 import com.dicoding.submission2.model.MatchModel
+import com.dicoding.submission2.model.MatchModelResponse
 import com.dicoding.submission2.view.ViewAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 
 class MatchRepo(private var view: ViewAdapter, private var context: Context) {
     private val matchList: MutableList<MatchModel> = mutableListOf()
-    fun getMatch(endpoint: String) {
+
+    companion object {
+        private val TAG = MatchRepo::class.java.canonicalName
+    }
+
+    fun getMatch(endpoint: String, callback: MatchRepoCallback<MatchModelResponse?>) {
         val queue = Volley.newRequestQueue(context)
         val stringRequestQueue = JsonObjectRequest(
             Request.Method.GET,
