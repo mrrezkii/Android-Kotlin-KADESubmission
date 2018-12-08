@@ -8,6 +8,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.dicoding.submission2.R
 import com.dicoding.submission2.model.DetailModel
+import com.dicoding.submission2.model.DetailModelResponse
 import com.dicoding.submission2.model.TeamModel
 import com.dicoding.submission2.view.ViewDetail
 
@@ -15,7 +16,12 @@ class DetailRepo(private var view: ViewDetail, private var context: Context) {
     private lateinit var det: DetailModel
     private lateinit var homeTeam: TeamModel
     private lateinit var awayTeam: TeamModel
-    fun getDetail(idEvent: String) {
+
+    companion object {
+        private val TAG = DetailRepo::class.java.canonicalName
+    }
+
+    fun getDetail(idEvent: String, callback: DetailRepoCallback<DetailModelResponse?>) {
         val queue = Volley.newRequestQueue(context)
         val stringRequest = JsonObjectRequest(
             Request.Method.GET,
