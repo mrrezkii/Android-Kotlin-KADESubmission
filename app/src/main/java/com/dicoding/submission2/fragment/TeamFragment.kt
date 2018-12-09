@@ -40,7 +40,7 @@ class TeamFragment : Fragment(), ViewTeam {
     private lateinit var searchItem: MenuItem
     private lateinit var searchManager: SearchManager
     private lateinit var id: Array<String>
-    private var loc: Int = 0
+    private var loc = 0
     private lateinit var v: View
     private var list: MutableList<TeamListModel> = mutableListOf()
     private lateinit var presenter: TeamPresenter
@@ -116,6 +116,7 @@ class TeamFragment : Fragment(), ViewTeam {
     }
 
     fun search(s: String) {
+        onLoading()
         if (!s.equals("")) {
             v.spn_league.visibility = View.GONE
             presenter.getData("searchteams.php?t=" + s)
