@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -56,18 +57,14 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
         try {
             database.use {
                 val result = select(TeamFavoriteModel.TABLE_FAVORITE_TEAM).whereArgs(
-                    "(" + TeamFavoriteModel.ID + ") = {id}",
-                    "id" to intent.getStringExtra("id")
-                ).exec {
-                    parseList(
-                        classParser<TeamFavoriteModel>()
-                    )
-                }
+                    "(" +
+                            TeamFavoriteModel.TEAM_ID + ") = {id}", "id" to intent.getStringExtra("id")
+                )
+                    .exec { parseList(classParser<TeamFavoriteModel>()) }
                 if (!result.isEmpty()) favorite = true
-
             }
         } catch (e: Exception) {
-            Toast.makeText(this, e.message!!, Toast.LENGTH_SHORT).show()
+            Log.e("error", e.message)
         }
         isAvailable()
     }
@@ -129,6 +126,7 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
                 Toast.makeText(this, e.message!!, Toast.LENGTH_SHORT).show()
             }
             favorite = true
+            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
             return true
         }
         Toast.makeText(this, "Not Initialized", Toast.LENGTH_SHORT).show()
@@ -145,6 +143,7 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
                 )
             }
             favorite = false
+            Toast.makeText(this, "Removed to favorite", Toast.LENGTH_SHORT).show()
             return true
         }
         return false
