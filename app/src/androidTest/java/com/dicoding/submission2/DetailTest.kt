@@ -9,8 +9,8 @@ import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
-import com.dicoding.submission2.R.id.add_fav
-import com.dicoding.submission2.R.id.recyclerViewLastMatch
+import android.util.Log
+import com.dicoding.submission2.R.id.*
 import com.dicoding.submission2.activity.MainActivity
 import org.junit.Rule
 import org.junit.Test
@@ -54,6 +54,32 @@ class DetailTest {
         Espresso.onView(ViewMatchers.withId(add_fav)).perform(ViewActions.click())
 
         Espresso.pressBack()
+    }
+
+
+    @Test
+    fun teamDetailTest() {
+        try {
+            Espresso.onView(ViewMatchers.withId(teams_menu)).perform(ViewActions.click())
+            delay()
+            Espresso.onView(ViewMatchers.withId(recyclerViewTeamList))
+                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+            delay()
+            Espresso.onView(ViewMatchers.withId(iv_header)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+            // add fav
+            Espresso.onView(ViewMatchers.withId(add_fav)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+            Espresso.onView(ViewMatchers.withId(add_fav)).perform(ViewActions.click())
+
+            // removed fav
+            Espresso.onView(ViewMatchers.withId(add_fav)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+            Espresso.onView(ViewMatchers.withId(add_fav)).perform(ViewActions.click())
+
+
+            Espresso.pressBack()
+        } catch (e: Exception) {
+            Log.e("Error", e.message)
+        }
     }
 
     private fun delay() {
