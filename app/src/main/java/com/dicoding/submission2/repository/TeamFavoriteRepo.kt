@@ -1,7 +1,7 @@
 package com.dicoding.submission2.repository
 
 import android.content.Context
-import com.dicoding.submission2.DBHelper
+import com.dicoding.submission2.database.DBHelper
 import com.dicoding.submission2.model.TeamFavoriteModel
 import com.dicoding.submission2.model.TeamListModel
 import com.dicoding.submission2.view.ViewTeam

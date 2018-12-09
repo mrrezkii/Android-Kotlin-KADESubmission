@@ -12,8 +12,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.dicoding.submission2.DBHelper
 import com.dicoding.submission2.R
+import com.dicoding.submission2.database.DBHelper
 import com.dicoding.submission2.model.DetailModel
 import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.TeamModel

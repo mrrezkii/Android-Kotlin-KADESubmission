@@ -1,4 +1,4 @@
-package com.dicoding.submission2
+package com.dicoding.submission2.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

@@ -1,7 +1,7 @@
 package com.dicoding.submission2.repository
 
 import android.content.Context
-import com.dicoding.submission2.DBHelper
+import com.dicoding.submission2.database.DBHelper
 import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.MatchModel
 import com.dicoding.submission2.view.ViewAdapter

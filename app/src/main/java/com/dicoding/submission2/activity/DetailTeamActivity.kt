@@ -10,9 +10,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
-import com.dicoding.submission2.DBHelper
 import com.dicoding.submission2.R
 import com.dicoding.submission2.adapter.DetailTeamPagerAdapter
+import com.dicoding.submission2.database.DBHelper
 import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.TeamFavoriteModel
 import com.dicoding.submission2.model.TeamListModel
