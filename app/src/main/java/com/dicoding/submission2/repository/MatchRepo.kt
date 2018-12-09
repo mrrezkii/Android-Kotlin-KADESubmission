@@ -21,11 +21,6 @@ class MatchRepo(private var view: ViewAdapter, private var context: Context) {
     }
 
     private val matchList: MutableList<MatchModel> = mutableListOf()
-
-    companion object {
-        private val TAG = MatchRepo::class.java.canonicalName
-    }
-
     fun getMatch(endpoint: String, callback: MatchRepoCallback<MatchModelResponse?>) {
         val queue = Volley.newRequestQueue(context)
         val stringRequestQueue = JsonObjectRequest(

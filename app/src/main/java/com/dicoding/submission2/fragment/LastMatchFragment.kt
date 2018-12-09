@@ -73,7 +73,7 @@ class LastMatchFragment : Fragment(), MatchView, ViewAdapter {
         adapter = RecyclerViewAdapter(this.context!!, list)
         id = LeagueID.id.value
         val presenter = MatchPresenter(this, MatchRepo(this, this.context!!))
-        presenter.getData("eventspastleague.php?id=" + id[loc])
+        presenter.getData("eventspastleague.php?id=4329")
         v.swipeRefresh.setOnRefreshListener {
             onLoading()
             presenter.getData("eventspastleague.php?id=" + id[loc])
