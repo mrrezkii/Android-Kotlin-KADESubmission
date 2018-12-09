@@ -15,33 +15,15 @@ import com.bumptech.glide.Glide
 import com.dicoding.submission2.DBHelper
 import com.dicoding.submission2.R
 import com.dicoding.submission2.model.DetailModel
-import com.dicoding.submission2.model.DetailModelResponse
 import com.dicoding.submission2.model.MatchFavoriteModel
 import com.dicoding.submission2.model.TeamModel
 import com.dicoding.submission2.presenter.DetailPresenter
 import com.dicoding.submission2.repository.DetailRepo
-import com.dicoding.submission2.view.DetailView
 import com.dicoding.submission2.view.ViewDetail
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.*
 
-class DetailActivity : AppCompatActivity(), DetailView, ViewDetail {
-    override fun onShowLoading() {
-
-    }
-
-    override fun onHideLoading() {
-
-    }
-
-    override fun onDataLoaded(data: DetailModelResponse?) {
-
-    }
-
-    override fun onDataError() {
-
-    }
-
+class DetailActivity : AppCompatActivity(), ViewDetail {
     private var favorite = false
     private val database = DBHelper(this)
     private lateinit var detail: DetailModel
@@ -89,8 +71,8 @@ class DetailActivity : AppCompatActivity(), DetailView, ViewDetail {
             if (!result.isEmpty()) favorite = true
         }
 
-        val presenter = DetailPresenter(this, DetailRepo(this, this))
-        presenter.getData(intent.getStringExtra("idEvent"))
+        val presenter = DetailPresenter(intent.getStringExtra("idEvent"), DetailRepo(this, this))
+        presenter.getData()
         isAvailable()
     }
 
