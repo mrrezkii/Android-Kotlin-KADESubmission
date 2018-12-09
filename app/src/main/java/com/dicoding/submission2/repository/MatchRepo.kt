@@ -15,6 +15,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class MatchRepo(private var view: ViewAdapter, private var context: Context) {
+
+    companion object {
+        private val TAG = MatchRepo::class.java.canonicalName
+    }
+
     private val matchList: MutableList<MatchModel> = mutableListOf()
 
     companion object {
