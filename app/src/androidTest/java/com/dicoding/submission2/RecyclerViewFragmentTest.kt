@@ -43,7 +43,6 @@ class RecyclerViewFragmentTest {
     @Test
     fun testRv() {
         Thread.sleep(3000)
-        try {
             Espresso.onView(ViewMatchers.withId(recyclerViewLastMatch))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
             Espresso.onView(ViewMatchers.withId(recyclerViewLastMatch))
@@ -53,7 +52,7 @@ class RecyclerViewFragmentTest {
             Thread.sleep(3000)
             try {
                 val matcher = allOf(
-                    withText("TAB TITLE"),
+                    withText("Last Match"),
                     isDescendantOfA(withId(R.id.tabs_main))
                 )
                 onView(matcher).perform(click())
@@ -62,9 +61,5 @@ class RecyclerViewFragmentTest {
                 Log.e("Error", e.message)
             }
             onView(withId(viewpager_main)).check(matches(isCompletelyDisplayed()))
-        } catch (e: Exception) {
-            Log.e("Error", e.message)
-        }
-
     }
 }
