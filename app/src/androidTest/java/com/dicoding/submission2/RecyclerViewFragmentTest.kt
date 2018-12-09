@@ -16,8 +16,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import com.dicoding.submission2.R.id.recyclerViewLastMatch
-import com.dicoding.submission2.R.id.viewpager_main
+import com.dicoding.submission2.R.id.*
 import com.dicoding.submission2.activity.MainActivity
 import org.hamcrest.Matchers.allOf
 import org.junit.Before
@@ -61,5 +60,17 @@ class RecyclerViewFragmentTest {
                 Log.e("Error", e.message)
             }
             onView(withId(viewpager_main)).check(matches(isCompletelyDisplayed()))
+    }
+
+    @Test
+    fun testTeamRv() {
+        onView(withId(teams_menu)).perform(click())
+        Thread.sleep(3000)
+        onView(withId(recyclerViewTeamList)).check(matches(isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(recyclerViewTeamList))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
+        Espresso.onView(ViewMatchers.withId(add_fav)).perform(ViewActions.click())
+        Thread.sleep(3000)
+        Espresso.pressBack()
     }
 }
