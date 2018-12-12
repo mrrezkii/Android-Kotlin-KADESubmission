@@ -28,7 +28,7 @@ class MemberAdapter(private val context: Context, private val memberList: Mutabl
         fun bindItem(member: MemberModel) {
             Glide.with(v.context).load(member.cutOut).into(v.ivList)
             v.tvName.text = member.name
-            v.layout.setOnClickListener {
+            v.layoutTeam.setOnClickListener {
                 val intent = Intent(v.context!!, MemberDetailActivity::class.java)
                 intent.putExtra("id",member.id)
                 v.context!!.startActivity(intent)

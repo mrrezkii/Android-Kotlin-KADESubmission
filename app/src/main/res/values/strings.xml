@@ -6,8 +6,7 @@
     <string name="teams">Team</string>
     <string name="favorites">Favorites</string>
 
-
-    <string name="team_list_image">Team Emblem</string>
+    <string name="ivTeamList">Team Emblem</string>
     <string name="iv_desc">Header Image</string>
 
     <array name="league_name">

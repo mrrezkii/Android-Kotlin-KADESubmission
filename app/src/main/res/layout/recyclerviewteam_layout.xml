@@ -5,14 +5,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:orientation="horizontal"
-        android:id="@+id/layout">
+        android:id="@+id/layoutTeam"
+        android:background="@drawable/background_with_shadow">
 
     <ImageView
-            android:contentDescription="@string/team_list_image"
+            android:contentDescription="@string/ivTeamList"
             android:id="@+id/ivList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"/>
+            android:layout_weight="0.8"
+            android:layout_margin="10dp"/>
 
     <TextView
             android:id="@+id/tvName"
@@ -21,6 +23,9 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="0.2"
             android:layout_marginStart="16dp"
-            android:gravity="center_vertical"/>
+            android:textColor="@color/md_grey_800"
+            android:textSize="10pt"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/lato_bold"/>
 
 </LinearLayout>

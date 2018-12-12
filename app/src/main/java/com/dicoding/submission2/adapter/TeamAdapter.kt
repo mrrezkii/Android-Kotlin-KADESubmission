@@ -29,7 +29,7 @@ class TeamAdapter(val con: Context, val team: MutableList<TeamListModel>) :
         fun bindItem(team: TeamListModel) {
             itemView.tvName.text = team.name
             Glide.with(itemView).load(team.emblem).into(itemView.ivList)
-            itemView.layout.setOnClickListener {
+            itemView.layoutTeam.setOnClickListener {
                 val i = Intent(itemView.context, DetailTeamActivity::class.java)
                 i.putExtra("id", team.id)
                 itemView.context.startActivity(i)
