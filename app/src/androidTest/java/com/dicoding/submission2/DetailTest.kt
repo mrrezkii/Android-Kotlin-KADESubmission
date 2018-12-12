@@ -65,7 +65,8 @@ class DetailTest {
             Espresso.onView(ViewMatchers.withId(recyclerViewTeamList))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
             delay()
-            Espresso.onView(ViewMatchers.withId(iv_header)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+            Espresso.onView(ViewMatchers.withId(imageViewHeader))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
             // add fav
             Espresso.onView(ViewMatchers.withId(add_fav)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))

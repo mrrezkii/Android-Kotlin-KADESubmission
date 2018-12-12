@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_member_detail.*
 class MemberDetailActivity : AppCompatActivity(), ViewMemberDetail {
     override fun onDataLoaded(member: MemberModel) {
         if (!this.isFinishing) {
-            Glide.with(this).load(member.thumbnail).into(iv_header)
+            Glide.with(this).load(member.thumbnail).into(imageViewHeader)
         }
         collapsing_toolbar.title = member.name
         tv_member_detail.text = member.desc

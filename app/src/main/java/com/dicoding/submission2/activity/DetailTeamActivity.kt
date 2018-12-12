@@ -34,7 +34,7 @@ class DetailTeamActivity : AppCompatActivity(), ViewTeamDetail {
         bundle.putString("id", detail.id)
         bundle.putString("detail", detail.desc)
         if (!this.isFinishing) {
-            Glide.with(this).load(detail.emblem).into(iv_header)
+            Glide.with(this).load(detail.emblem).into(imageViewHeader)
         }
         collapsing_toolbar.title = detail.name
         val adapter = DetailTeamPagerAdapter(supportFragmentManager, bundle)
