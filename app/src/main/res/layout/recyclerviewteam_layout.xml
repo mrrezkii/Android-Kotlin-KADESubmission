@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="24dp"
-              android:orientation="horizontal"
-              android:id="@+id/layout">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:orientation="horizontal"
+        android:id="@+id/layout">
 
     <ImageView
             android:contentDescription="@string/team_list_image"
@@ -21,4 +22,5 @@
             android:layout_weight="0.2"
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"/>
+
 </LinearLayout>
